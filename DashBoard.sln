@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashBoard", "DashBoard\DashBoard.csproj", "{19E060E5-F62D-41ED-A75A-1217AFA689A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Choiyebeen", "Choiyebeen\Choiyebeen.csproj", "{22259762-86A4-4992-AD9B-EC70F1E8B516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{19E060E5-F62D-41ED-A75A-1217AFA689A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19E060E5-F62D-41ED-A75A-1217AFA689A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19E060E5-F62D-41ED-A75A-1217AFA689A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19E060E5-F62D-41ED-A75A-1217AFA689A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22259762-86A4-4992-AD9B-EC70F1E8B516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22259762-86A4-4992-AD9B-EC70F1E8B516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22259762-86A4-4992-AD9B-EC70F1E8B516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22259762-86A4-4992-AD9B-EC70F1E8B516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

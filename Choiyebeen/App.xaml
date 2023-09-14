@@ -1,7 +1,7 @@
-﻿<Application x:Class="DashBoard.App"
+﻿<Application x:Class="Choiyebeen.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:DashBoard"
+             xmlns:local="clr-namespace:Choiyebeen"
              StartupUri="View/LoginView.xaml">
     <Application.Resources>
          

@@ -58,8 +58,14 @@
     <Compile Include="CustomControls\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\IUserRepository.cs" />
+    <Compile Include="Model\NetworkCredntial.cs" />
+    <Compile Include="Model\UserAccountModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\Securestring.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelCommand.cs" />
     <Compile Include="View\LoginView.xaml.cs">
@@ -119,9 +125,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="images\key-icon.png" />
     <Resource Include="images\user-icon.png" />

@@ -32,6 +32,7 @@
             <ImageBrush ImageSource="/Images/DYback.jpg"
                        Stretch="None"/>
         </Border.Background>
+        
         <Border CornerRadius="10"
             BorderThickness="1"
                Opacity="0.95" >
@@ -175,7 +176,7 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Margin="0,35,0,0"/>
-
+                    
                     <TextBox x:Name="txtUser"
                              Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="13"
@@ -184,10 +185,10 @@
                              Foreground="White"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"
+                             BorderThickness="0,0,0,2"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Margin="-8,5,8,0"
+                             Margin="0,5,0,0"
                              Padding="20,0,0,0" TextChanged="txtUser_TextChanged">
 
                         <TextBox.Background>
@@ -197,9 +198,9 @@
                         </TextBox.Background>
                     </TextBox>
 
-                    
-                    
-                    
+
+
+
                     <TextBlock Text="Password"
                                Foreground="DarkGray"
                                FontSize="12"
@@ -224,7 +225,7 @@
 
 
                     <Button x:Name="btnLogin"
-                            Command="{Binding Logincommand}"
+                            Command="{Binding LoginCommand}"
                             BorderThickness="0"
                             Content="LOG IN"
                             Foreground="White"

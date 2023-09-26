@@ -1,9 +1,18 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
+using Choiyebeen.Repositories;
+
+
 
 namespace Choiyebeen.ViewModel
 {
@@ -11,9 +20,13 @@ namespace Choiyebeen.ViewModel
     {
         //Fields
         private string _username;
-        private Securestring _password;
+        private SecureString _password;
         private string _errorMessage;
         private bool _isViewVisible=true;
+
+        private IUserRepository userRepository;
+
+        
 
         //properties
         public string Username
@@ -29,7 +42,7 @@ namespace Choiyebeen.ViewModel
             }
         }
 
-        private Securestring Password
+        public SecureString Password
         {
             get
             {
@@ -43,7 +56,7 @@ namespace Choiyebeen.ViewModel
             }
         }
 
-        private string ErrorMessage
+        public string ErrorMessage
         {
             get
             {
@@ -74,7 +87,7 @@ namespace Choiyebeen.ViewModel
 
         // -> Commands
 
-        public ICommand Logincommand { get; }
+        public ICommand LoginCommand { get; }
         public ICommand RecoverPasswordcommand { get; }
         public ICommand showPasswordcommand { get; }
         public ICommand RememberPasswordcommand { get; }
@@ -85,7 +98,8 @@ namespace Choiyebeen.ViewModel
         //constructor
         public LoginViewModel()
         {
-            Logincommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            userRepository = new UserRepository();
+            LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordcommand = new ViewModelCommand(p=>ExecuteRecoverPassCommand("",""));
         }
 
@@ -103,7 +117,18 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            throw new NotImplementedException();
+            var isValidUser = userRepository.AuthenticateUser(new NetworkCredntial(Username, Password));
+            if (isValidUser)
+            {
+                Thread.CurrentPrincipal = new GenericPrincipal(
+                    new GenericIdentity(Username), null);
+                IsViewVisible = false;
+            }
+            else
+            {
+                ErrorMessage = "* Invalid username or password";
+            }
+
         }
         private void ExecuteRecoverPassCommand(string username, string email)
         {

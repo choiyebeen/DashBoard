@@ -1,5 +1,4 @@
-﻿using Choiyebeen.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,17 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Choiyebeen.Model;
 
 namespace Choiyebeen.Repositories
 {
     public class UserRepository : RepositoryBase, IUserRepository
     {
-        public void add(UserModel userModel)
+        public void Add(UserModel userModel)
         {
             throw new NotImplementedException();
         }
 
-        public bool AuthenticateUser(NetworkCredntial credntial)
+        public bool AuthenticateUser(NetworkCredential credntial)
         {
             bool validUser;
             using (var connection=GetConnection())
@@ -28,6 +28,7 @@ namespace Choiyebeen.Repositories
                 command.CommandText = "select *from [User] where username=@username and [password]=@password";
                 command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credntial.UserName;
                 command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credntial.Password;
+               // command.Parameters.Add("@password", SqlDbType.NVarChar).Value = "1234";
                 validUser = command.ExecuteScalar() == null ? false : true;
 
             }
@@ -36,10 +37,7 @@ namespace Choiyebeen.Repositories
 
         }
 
-        public object AuthenticateUser(NetworkCredential networkCredential)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void Edit(UserModel userModel)
         {

@@ -44,10 +44,5 @@ namespace Choiyebeen.View
         {
 
         }
-
-        private void txtUser_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

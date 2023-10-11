@@ -15,6 +15,7 @@ namespace Choiyebeen
     /// </summary>
     public partial class App : Application
     {
+        //로그인 
         private void ApplicationStart(object sender, StartupEventArgs e)
         {
             var loginView = new LoginView();
@@ -22,7 +23,7 @@ namespace Choiyebeen
             loginView.IsVisibleChanged += (s, ev) =>
             {
                 if (loginView.IsVisible == false && loginView.IsLoaded)
-                {
+               {
                     var mainView = new MainView();
                     mainView.Show();
                     loginView.Close();

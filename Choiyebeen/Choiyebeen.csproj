@@ -67,14 +67,23 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModel\AdeViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SmoothieViewModel.cs" />
+    <Compile Include="ViewModel\TeaViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelCommand.cs" />
+    <Compile Include="View\AdeView.xaml.cs">
+      <DependentUpon>AdeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\desertView.xaml.cs">
+      <DependentUpon>desertView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -84,6 +93,12 @@
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SmoothieView.xaml.cs">
+      <DependentUpon>SmoothieView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeaView.xaml.cs">
+      <DependentUpon>TeaView.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomControls\BindablePasswordBox.xaml">
       <SubType>Designer</SubType>
@@ -109,7 +124,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\AdeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\desertView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,6 +145,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SmoothieView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TeaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +196,45 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\DYback.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\Clatte.png" />
+    <Resource Include="images\coffee\Hlatte.png" />
+    <Resource Include="images\coffee\icecoffee.png" />
+    <Resource Include="images\coffee\icelatte.png" />
+    <Resource Include="images\coffee\Mochalatte.png" />
+    <Resource Include="images\coffee\Vlatte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\Cookie.png" />
+    <Resource Include="images\desert\Cupcookie.png" />
+    <Resource Include="images\desert\Icecream.png" />
+    <Resource Include="images\desert\Macaron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smoothie\Byogurt.png" />
+    <Resource Include="images\smoothie\Pyogurt.png" />
+    <Resource Include="images\smoothie\Syogurt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ade\Gade.png" />
+    <Resource Include="images\ade\GGade.png" />
+    <Resource Include="images\ade\Lade.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Carbonated\Cider.png" />
+    <Resource Include="images\Carbonated\Coca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Ctea.png" />
+    <Resource Include="images\tea\Gtea.png" />
+    <Resource Include="images\tea\Hbtea.png" />
+    <Resource Include="images\tea\Htea.png" />
+    <Resource Include="images\tea\Jtea.png" />
+    <Resource Include="images\tea\Ltea.png" />
+    <Resource Include="images\tea\Otea.png" />
+    <Resource Include="images\tea\PPtea.png" />
+    <Resource Include="images\tea\Ptea.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

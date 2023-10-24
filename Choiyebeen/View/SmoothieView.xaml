@@ -1,11 +1,12 @@
-﻿<UserControl x:Class="Choiyebeen.View.HomeView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Choiyebeen.View" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl x:Class="Choiyebeen.View.SmoothieView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Choiyebeen.View" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -23,7 +24,7 @@
                 Grid.Column="0">
                 <fa:IconImage Icon="Search" Height="20" Width="20" Foreground="{StaticResource plainTextColor3}"/>
 
-                <TextBox Text="Search...Carbonated"
+                <TextBox Text="Search... Smoothie"
                  FontSize="13" Height="24" Width="300" Background="Transparent" FontWeight="Medium" FontFamily="Montserrat"
                  Foreground="{StaticResource plainTextColor3}"
                  CaretBrush="{StaticResource plainTextColor3}"
@@ -35,23 +36,29 @@
             </StackPanel>
         </Grid>
 
-
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
-                Command="{Binding CiderCommand}">
-            <Image Source="/images/Carbonated/Cider.png"/>
+                Command="{Binding PyogurtCommand}">
+            <Image Source="/images/smoothie/Pyogurt.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Margin="180,10,0,0"
-                Command="{Binding CocaCommand}">
-            <Image Source="/images/Carbonated/Coca.png"/>
+                Command="{Binding ByogurtCommand}">
+            <Image Source="/images/smoothie/Byogurt.png"/>
         </Button>
+
+        <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="350,10,0,0"
+                Command="{Binding SyogurtCommand}">
+            <Image Source="/images/smoothie/Syogurt.png"/>
+        </Button>
+
     </Grid>
-
 </UserControl>
-

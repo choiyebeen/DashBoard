@@ -13,10 +13,12 @@
         Background="Transparent"
         AllowsTransparency="True">
 
+    <!--메인 뷰 모델 연결-->
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
+    <!--각각의 뷰로 연결-->
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
             <local:HomeView/>
@@ -26,8 +28,22 @@
             <local:CustomerView/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewModel:TeaViewModel}">
+            <local:TeaView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:SmoothieViewModel}">
+            <local:SmoothieView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:AdeViewModel}">
+            <local:AdeView/>
+        </DataTemplate>
+
+
     </Window.Resources>
 
+    <!--디자인-->
     <Border CornerRadius="10"
             BorderThickness="1" >
 
@@ -96,8 +112,8 @@
                                  Command="{Binding ShowCustomerViewCommand}">
 
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Coffee" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Dutch-coffee" Style="{StaticResource menuButtonText}"/>
+                            <fa:IconImage Icon="Cocktail" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Carbonated-Drinks" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
@@ -106,7 +122,8 @@
                     
                     
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color4}">
+                                 Tag="{StaticResource color4}"
+                                 Command="{Binding ShowTeaCommand}">
 
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Box"  Style="{StaticResource menuButtonIcon}"/>
@@ -116,7 +133,8 @@
 
                     
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color6}">
+                                 Tag="{StaticResource color6}"
+                                 Command="{Binding ShowSmoothieCommand}">
 
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="BottleWater" Style="{StaticResource menuButtonIcon}"/>
@@ -126,7 +144,8 @@
 
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color5}">
+                                 Tag="{StaticResource color5}"
+                                 Command="{Binding ShowAdeCommand}">
 
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Cocktail" Style="{StaticResource menuButtonIcon}"/>

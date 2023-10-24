@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 namespace Choiyebeen.ViewModel
 {
+    // 변화 감지
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -16,5 +17,6 @@ namespace Choiyebeen.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         
         }
+
     }
 }

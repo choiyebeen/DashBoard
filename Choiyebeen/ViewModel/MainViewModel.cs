@@ -36,7 +36,7 @@ namespace Choiyebeen.ViewModel
             }
         }
 
-        public ViewModelBase CurrentChildView
+        public ViewModelBase CurrentChildView // 뷰모델 베이스를 넘겨줘야함 / 뷰 모델 베이스로 사용
         {
             get
             {
@@ -81,7 +81,9 @@ namespace Choiyebeen.ViewModel
         //--> commands
         public ICommand ShowHomeViewCommand { get; }
         public ICommand ShowCustomerViewCommand { get; }
-
+        public ICommand ShowTeaCommand { get; }
+        public ICommand ShowSmoothieCommand { get; }
+        public ICommand ShowAdeCommand { get; }
         public MainViewModel()
         {
             userRepository = new UserRepository();
@@ -90,26 +92,52 @@ namespace Choiyebeen.ViewModel
             //Initialize commands
             ShowHomeViewCommand = new ViewModelCommand(ExecuteShowHomeViewCommand);
             ShowCustomerViewCommand = new ViewModelCommand(ExecuteShowCustomerViewCommand);
-
+            ShowTeaCommand = new ViewModelCommand(ExecuteShowTeaCommand);
+            ShowSmoothieCommand = new ViewModelCommand(ExecuteShowSmoothieCommand);
+            ShowAdeCommand = new ViewModelCommand(ExecuteShowAdeCommand);
             //Default view
             ExecuteShowHomeViewCommand(null);
 
             LoadCurrentUserData();
         }
 
+        private void ExecuteShowAdeCommand(object obj)
+        {
+            CurrentChildView = new AdeViewModel();
+            Caption = "Ade";
+            Icon = IconChar.Home;
+        }
+
+        private void ExecuteShowSmoothieCommand(object obj)
+        {
+            CurrentChildView = new SmoothieViewModel();
+            Caption = "Smoothie";
+            Icon = IconChar.Home;
+        }
+
         private void ExecuteShowCustomerViewCommand(object obj)
         {
-            CurrentChildView = new CustomerViewModel();
+            CurrentChildView = new HomeViewModel();
             Caption = "Customers";
             Icon = IconChar.UserGroup;
         }
 
         private void ExecuteShowHomeViewCommand(object obj)
         {
-            CurrentChildView = new HomeViewModel();
+            CurrentChildView = new CustomerViewModel();
             Caption = "Dashboard";
             Icon = IconChar.Home;
         }
+
+        private void ExecuteShowTeaCommand(object obj)
+        {
+            CurrentChildView = new TeaViewModel();
+            Caption = "Tea";
+            Icon = IconChar.Home;
+        }
+
+       
+
 
         private void LoadCurrentUserData()
         {

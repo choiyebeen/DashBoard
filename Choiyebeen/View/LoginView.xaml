@@ -14,43 +14,46 @@
         AllowsTransparency="True" 
         MouseDown="Window_MouseDown">
 
+    <!--로그인뷰모델 연결-->
     <Window.DataContext>
         <viewModel:LoginViewModel/>
     </Window.DataContext>
 
+    <!--리소스 정의 V를 v로 만들면 보이긴보임..-->
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanTovisibility"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </Window.Resources>
 
-    <Window.Visibility>
-        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanTovisibility}"/>
+    <!--로그인 틀리면 틀렸다고 알려줌 / 여기에 문제있음-->
+        <Window.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
 
-         
+    <!--디자인-->
     <Border CornerRadius ="12">
         <Border.Background>
             <ImageBrush ImageSource="/Images/DYback.jpg"
                        Stretch="None"/>
         </Border.Background>
-        
+
         <Border CornerRadius="10"
             BorderThickness="1"
                Opacity="0.95" >
-            
-        <Border.BorderBrush>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
-                <GradientStop Color="{StaticResource winBorderColor2}" Offset="0.75"/>
-                <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.BorderBrush>
 
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
-                <GradientStop Color="{StaticResource primaryBackColor2}" Offset="0.95"/>
-            </LinearGradientBrush>
-        </Border.Background>
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource winBorderColor2}" Offset="0.75"/>
+                    <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource primaryBackColor2}" Offset="0.95"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -83,7 +86,7 @@
                             Cursor="Hand"
                             Grid.Column="1"
                             Click="btnMinimize_Click">
-                        
+
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED"/>
@@ -167,16 +170,16 @@
                                TextAlignment="Center"
                                Margin="9,5,0,0"/>
 
-                    
-                    
-                    
+
+
+
                     <TextBlock Text="Username"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Margin="0,35,0,0"/>
-                    
+
                     <TextBox x:Name="txtUser"
                              Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="13"
@@ -208,10 +211,11 @@
                                FontFamily="Montserrat"
                                Margin="0,15,0,0"/>
 
+                    <!--비밀번호 입력-->
                     <customcontrols:BindablePasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                         Height="28"
                                                                         Margin="0,5,0,0">
-                        
+
                     </customcontrols:BindablePasswordBox>
 
 
@@ -221,8 +225,6 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Margin="0,10,0,0"/>
-
-
 
                     <Button x:Name="btnLogin"
                             Command="{Binding LoginCommand}"

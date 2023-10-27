@@ -13,12 +13,19 @@ namespace Choiyebeen.ViewModel
         public ICommand PyogurtCommand { get; }
         public ICommand ByogurtCommand { get; }
         public ICommand SyogurtCommand { get; }
+        public ICommand MyogurtCommand { get; }
 
         public SmoothieViewModel()
         {
             PyogurtCommand = new ViewModelCommand(ExecutePyogurtCommand);
             ByogurtCommand = new ViewModelCommand(ExecuteByogurtCommand);
             SyogurtCommand = new ViewModelCommand(ExecuteSyogurtCommand);
+            MyogurtCommand = new ViewModelCommand(ExecuteMyogurtCommand);
+        }
+
+        private void ExecuteMyogurtCommand(object obj)
+        {
+            MessageBox.Show("망고 요거트 스무디");
         }
 
         private void ExecuteSyogurtCommand(object obj)

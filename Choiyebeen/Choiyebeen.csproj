@@ -62,6 +62,10 @@
     <Compile Include="CustomControls\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\CartItemBox.xaml.cs">
+      <DependentUpon>CartItemBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CartModel.cs" />
     <Compile Include="Model\IUserRepository.cs" />
     <Compile Include="Model\UserAccountModel.cs" />
     <Compile Include="Model\UserModel.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ViewModel\AdeViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\DesertViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -82,8 +87,8 @@
     <Compile Include="View\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\desertView.xaml.cs">
-      <DependentUpon>desertView.xaml</DependentUpon>
+    <Compile Include="View\DesertView.xaml.cs">
+      <DependentUpon>DesertView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -101,6 +106,10 @@
       <DependentUpon>TeaView.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomControls\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\CartItemBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,7 +141,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\desertView.xaml">
+    <Page Include="View\DesertView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,6 +244,16 @@
     <Resource Include="images\tea\Otea.png" />
     <Resource Include="images\tea\PPtea.png" />
     <Resource Include="images\tea\Ptea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smoothie\Myogurt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\Beanbread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cancle.png" />
+    <Resource Include="images\pay.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Choiyebeen.View
+namespace Choiyebeen.CustomControls
 {
     /// <summary>
-    /// DesertView.xaml에 대한 상호 작용 논리
+    /// CartItemBox.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class DesertView : UserControl
+    public partial class CartItemBox : UserControl
     {
-        public DesertView()
+        public CartItemBox()
         {
             InitializeComponent();
         }

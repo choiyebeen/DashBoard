@@ -15,10 +15,10 @@ namespace Choiyebeen.ViewModel
    public class MainViewModel:ViewModelBase
     {
         private UserAccountModel _currentUserAccount;
+        private CartModel cartModel;
         private ViewModelBase _currentChildView;
         private string _caption;
         private IconChar _icon;
-
         private IUserRepository userRepository;
 
         //properties
@@ -84,6 +84,8 @@ namespace Choiyebeen.ViewModel
         public ICommand ShowTeaCommand { get; }
         public ICommand ShowSmoothieCommand { get; }
         public ICommand ShowAdeCommand { get; }
+        public ICommand ShowDesertCommand { get; }
+
         public MainViewModel()
         {
             userRepository = new UserRepository();
@@ -95,10 +97,18 @@ namespace Choiyebeen.ViewModel
             ShowTeaCommand = new ViewModelCommand(ExecuteShowTeaCommand);
             ShowSmoothieCommand = new ViewModelCommand(ExecuteShowSmoothieCommand);
             ShowAdeCommand = new ViewModelCommand(ExecuteShowAdeCommand);
+            ShowDesertCommand = new ViewModelCommand(ExecuteShowDesertCommand);
             //Default view
             ExecuteShowHomeViewCommand(null);
 
             LoadCurrentUserData();
+        }
+
+        private void ExecuteShowDesertCommand(object obj)
+        {
+            CurrentChildView = new DesertViewModel();
+            Caption = "Desert";
+            Icon = IconChar.Home;
         }
 
         private void ExecuteShowAdeCommand(object obj)

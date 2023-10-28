@@ -6,6 +6,7 @@
     <Color x:Key="primaryBackColor2">#C71585</Color>
     <Color x:Key="secondaryBackColor1">Indigo</Color>
     <Color x:Key="secondaryBackColor2">#C71585</Color>
+    <Color x:Key="secondaryBackColor3">#8A16C1</Color>
     
     <!-- Window Border Colors -->
     <Color x:Key="winBorderColor1">#462AD8</Color>

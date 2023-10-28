@@ -19,12 +19,12 @@
         <viewModel:LoginViewModel/>
     </Window.DataContext>
 
-    <!--리소스 정의 V를 v로 만들면 보이긴보임..-->
+    <!--리소스 정의 / + 뒤에 있는 V를 v로 만들면 보임 실행시 다시 대문자로 바꿔주기..-->
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </Window.Resources>
 
-    <!--로그인 틀리면 틀렸다고 알려줌 / 여기에 문제있음-->
+    <!--로그인 틀리면 틀렸다고 알림-->
         <Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>

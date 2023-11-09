@@ -151,7 +151,13 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteCancleCommand(object obj)
         {
-            throw new NotImplementedException();
+            MessageBoxResult cancle = MessageBox.Show("결제 취소하시겠습니까?", "결제 취소", MessageBoxButton.YesNo);
+
+            if (cancle == MessageBoxResult.Yes)
+            {
+                CartList.Clear();
+                Price = 0;
+            }
         }
 
         private void ExecutePayCommand(object obj)
@@ -161,14 +167,11 @@ namespace Choiyebeen.ViewModel
             if (result == MessageBoxResult.Yes)
             {
                 MessageBoxResult receipt = MessageBox.Show("영수증을 출력하시겠습니까?", "영수증", MessageBoxButton.YesNo);
-                if(receipt == MessageBoxResult.Yes)
-                {
-                    MessageBoxResult Thx = MessageBox.Show("감사합니다");
-                }
+                MessageBoxResult Thx = MessageBox.Show("감사합니다");
             }
-            
-
         }
+
+
 
         private void ExecuteShowDesertCommand(object obj)
         {

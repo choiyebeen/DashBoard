@@ -28,7 +28,8 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteBeanbreadCommand(object obj)
         {
-            MessageBox.Show("커피콩 모양 빵");
+            // MessageBox.Show("커피콩 모양 빵");
+            MainViewModel.m_price = 1000;
         }
 
         private void ExecuteMacaronCommand(object obj)

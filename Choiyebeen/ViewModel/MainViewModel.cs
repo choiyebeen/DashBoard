@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,13 +16,42 @@ namespace Choiyebeen.ViewModel
    public class MainViewModel:ViewModelBase
     {
         private UserAccountModel _currentUserAccount;
-        private CartModel cartModel;
         private ViewModelBase _currentChildView;
         private string _caption;
         private IconChar _icon;
         private IUserRepository userRepository;
+        public static int m_price;
+        private ObservableCollection<CartModel> m_cart_list; //이걸 통해서 표 만들어짐
+        
 
         //properties
+        public ObservableCollection<CartModel> CartList
+        {
+            get
+            {
+                return m_cart_list;
+            }
+            set
+            {
+                m_cart_list = value;
+                OnPropertyChanged(nameof(CartList));
+            }
+        }
+
+        public int Price
+        {
+            get 
+            {
+                return m_price;
+            }
+
+            set
+            {
+                m_price = value;
+                OnPropertyChanged(nameof(Price));
+            }
+
+        }
         public UserAccountModel CurrentUserAccount
         {
             get
@@ -85,11 +115,14 @@ namespace Choiyebeen.ViewModel
         public ICommand ShowSmoothieCommand { get; }
         public ICommand ShowAdeCommand { get; }
         public ICommand ShowDesertCommand { get; }
+        public ICommand PayCommand { get; set; }
+        public ICommand CancleCommand { get; set; }
 
         public MainViewModel()
         {
             userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
+            m_price = 0;
 
             //Initialize commands
             ShowHomeViewCommand = new ViewModelCommand(ExecuteShowHomeViewCommand);
@@ -98,10 +131,43 @@ namespace Choiyebeen.ViewModel
             ShowSmoothieCommand = new ViewModelCommand(ExecuteShowSmoothieCommand);
             ShowAdeCommand = new ViewModelCommand(ExecuteShowAdeCommand);
             ShowDesertCommand = new ViewModelCommand(ExecuteShowDesertCommand);
+            PayCommand = new ViewModelCommand(ExecutePayCommand);
+            CancleCommand = new ViewModelCommand(ExecuteCancleCommand);
+
+            CartList = new ObservableCollection<CartModel>(); //생성자에서 객체화
+            CartList.Add(new CartModel { ItemName = "아메리카노", ItemCount = 1, ItemPrice = 4000 });
+            CartList.Add(new CartModel { ItemName = "카페라떼", ItemCount = 2, ItemPrice = 4500 });
+            CartList.Add(new CartModel { ItemName = "카푸치노", ItemCount = 3, ItemPrice = 4500 });
+            for(int i = 0; i < 10; i++)
+            {
+                CartList.Add(new CartModel { ItemName = "카푸치노", ItemCount = 3, ItemPrice = 4500 });
+            }
+
             //Default view
             ExecuteShowHomeViewCommand(null);
 
             LoadCurrentUserData();
+        }
+
+        private void ExecuteCancleCommand(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExecutePayCommand(object obj)
+        {
+           MessageBoxResult result = MessageBox.Show("결제 하시겠습니까?","결제",MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                MessageBoxResult receipt = MessageBox.Show("영수증을 출력하시겠습니까?", "영수증", MessageBoxButton.YesNo);
+                if(receipt == MessageBoxResult.Yes)
+                {
+                    MessageBoxResult Thx = MessageBox.Show("감사합니다");
+                }
+            }
+            
+
         }
 
         private void ExecuteShowDesertCommand(object obj)

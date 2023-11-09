@@ -336,8 +336,40 @@
                 <!--수정 전 배경색 #800080-->
                 <Grid Grid.Column="0">
                     <Border Background="White" CornerRadius="30" Width="850" Height="250" Margin="0,10,0,10">
-                        <TextBlock Text="Sample" FontSize="50" Foreground="Black" Padding="10" FontFamily="Montserrat" Margin="20,20,20,20"/>
+                        <DataGrid Background="White" Width="830" Height="230" IsReadOnly="True" ItemsSource="{Binding CartList}"
+                                  RowHeight="45" FontSize="30" ColumnWidth="275" HorizontalContentAlignment="Center" VerticalAlignment="Center" RowHeaderWidth="0"
+                                  HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent" BorderThickness="0"
+                                   AutoGenerateColumns="False" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="상품명" Binding="{Binding ItemName}"/>
+                                <DataGridTextColumn Header="수량" Binding="{Binding ItemCount}"/>
+                                <DataGridTextColumn Header="가격" Binding="{Binding ItemPrice}"/>
+                            </DataGrid.Columns>
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Padding" Value="0,0,0,20"/>
+                                    <Setter Property="Background" Value="White"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGrid.CellStyle>
+                            
+                            
+
+                        </DataGrid>
                     </Border>
+                    
+                    
                 </Grid>
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Vertical">
@@ -350,7 +382,7 @@
                                 </Border>
                                 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                                    <TextBlock Text="30000" FontWeight="Bold" Margin="20,15,5,0"  FontSize="40" FontFamily="Montserrat" />
+                                    <TextBlock Text="{Binding Price}" FontWeight="Bold" Margin="20,15,5,0"  FontSize="40" FontFamily="Montserrat" />
                                     <TextBlock Text="WON" FontSize="30" Margin="0,23,10,0" FontFamily="Montserrat"/>
                                 </StackPanel >
                             </StackPanel>
@@ -358,7 +390,7 @@
 
                         
                         <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
-                            <Button Width="185" Height="100" Background="Transparent" Cursor="Hand">
+                            <Button Width="185" Height="100" Background="Transparent" Cursor="Hand" Command="{Binding PayCommand}">
                                 <Image Source="/images/pay.png"/>
                                 
                                 <Button.Template>
@@ -378,7 +410,7 @@
                             </Button>
 
 
-                            <Button Width="185" Height="100" Background="Transparent" Cursor="Hand">
+                            <Button Width="185" Height="100" Background="Transparent" Cursor="Hand" Command="{Binding CancleCommand}">
                                 <Image Source="/images/cancle.png"/>
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">

@@ -12,6 +12,12 @@ namespace Choiyebeen.Model
         {
             get; set;
         }
+
+        public int ItemCount
+        {
+            get;set;
+        }
+
         public int ItemPrice
         {
             get; set;

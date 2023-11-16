@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Choiyebeen.ViewModel
 {
     public class TeaViewModel : ViewModelBase
     {
+        public event EventHandler<CartModel> PriceChanged;
         public ICommand CteaCommand { get; }
         public ICommand GteaCommand { get; }
         public ICommand HteaCommand { get; }
@@ -33,42 +35,90 @@ namespace Choiyebeen.ViewModel
 
         private void ExecutePPteaCommand(object obj)
         {
-            MessageBox.Show("복숭아 티");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "복숭아 아이스티",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteOteaCommand(object obj)
         {
-            MessageBox.Show("오미자 차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "오미자 차",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteLteaCommand(object obj)
         {
-            MessageBox.Show("레몬차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "레몬 차",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteJteaCommand(object obj)
         {
-            MessageBox.Show("자스민 차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "자스민 차",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteHbteaCommand(object obj)
         {
-            MessageBox.Show("히비스커스 차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "히비스커스 차",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteHteaCommand(object obj)
         {
-            MessageBox.Show("한라봉 차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "한라봉 차",
+                ItemCount = 1,
+                ItemPrice = 4500
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteGteaCommand(object obj)
         {
-            MessageBox.Show("생강차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "생강차",
+                ItemCount = 1,
+                ItemPrice = 5000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteCteaCommand(object obj)
         {
-            MessageBox.Show("시트러스 차");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "시트러스 차",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
     }
 }

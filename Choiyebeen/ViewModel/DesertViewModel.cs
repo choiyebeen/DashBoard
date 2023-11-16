@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,14 @@ namespace Choiyebeen.ViewModel
 {
     public class DesertViewModel : ViewModelBase
     {
+        public event EventHandler<CartModel> PriceChanged; //얘를 통해서 뷰모델끼리 데이터를 주고 받음
         public ICommand CupcookieCommand { get; }
         public ICommand CookieCommand { get; }
         public ICommand IcecreamCommand { get; }
         public ICommand MacaronCommand { get; }
         public ICommand BeanbreadCommand { get; }
 
-        public DesertViewModel()
+        public DesertViewModel() //생성자 먼저사용됨
         {
             CupcookieCommand = new ViewModelCommand(ExecuteCupcookieCommand);
             CookieCommand = new ViewModelCommand(ExecuteCookieCommand);
@@ -28,28 +30,57 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteBeanbreadCommand(object obj)
         {
-            // MessageBox.Show("커피콩 모양 빵");
-            MainViewModel.m_price = 1000;
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "커피콩 빵",
+                ItemCount = 1,
+                ItemPrice = 3000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteMacaronCommand(object obj)
         {
-            MessageBox.Show("마카롱");
+            CartModel item = new CartModel()
+            {
+                ItemName = "마카롱",
+                ItemCount = 1,
+                ItemPrice = 2500
+            };
+            PriceChanged?.Invoke(this, item);
         }
 
         private void ExecuteIcecreamCommand(object obj)
         {
-            MessageBox.Show("구슬 아이스크림");
+            CartModel item = new CartModel()
+            {
+                ItemName = "구슬 아이스크림",
+                ItemCount = 1,
+                ItemPrice = 3000
+            };
+            PriceChanged?.Invoke(this, item);
         }
 
         private void ExecuteCookieCommand(object obj)
         {
-            MessageBox.Show("쿠키");
+            CartModel item = new CartModel()
+            {
+                ItemName = "쿠키",
+                ItemCount = 1,
+                ItemPrice = 2000
+            };
+            PriceChanged?.Invoke(this, item);
         }
 
         private void ExecuteCupcookieCommand(object obj)
         {
-            MessageBox.Show("컵 쿠키");
+            CartModel item = new CartModel()
+            {
+                ItemName = "컵쿠키",
+                ItemCount = 1,
+                ItemPrice = 2700
+            };
+            PriceChanged?.Invoke(this, item);
         }
     }
 }

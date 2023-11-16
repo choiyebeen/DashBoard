@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Choiyebeen.ViewModel
 {
     public class AdeViewModel : ViewModelBase
     {
+        public event EventHandler<CartModel> PriceChanged;
         public ICommand GadeCommand { get; }
         public ICommand GGadeCommand { get; }
         public ICommand LadeCommand { get; }
@@ -24,17 +26,35 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteLadeCommand(object obj)
         {
-            MessageBox.Show("레몬 에이드");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "레몬 에이드",
+                ItemCount = 1,
+                ItemPrice = 4300
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteGGadeCommand(object obj)
         {
-            MessageBox.Show("청포도 에이드");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "청포도 에이드",
+                ItemCount = 1,
+                ItemPrice = 4300
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteGadeCommand(object obj)
         {
-            MessageBox.Show("자몽 에이드");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "자몽 에이드",
+                ItemCount = 1,
+                ItemPrice = 4300
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
     }
 }

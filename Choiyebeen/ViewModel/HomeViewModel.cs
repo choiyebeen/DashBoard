@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Choiyebeen.ViewModel
 {
     public class HomeViewModel : ViewModelBase // 상속 -> 자료형 맞춰줘야함 
     {
+        public event EventHandler<CartModel> PriceChanged;
         public ICommand CiderCommand { get; }
         public ICommand CocaCommand { get; }
 
@@ -21,12 +23,24 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteCocaCommand(object obj)
         {
-            MessageBox.Show("콜라");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "콜라",
+                ItemCount = 1,
+                ItemPrice = 1500
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteCiderCommand(object obj)
         {
-            MessageBox.Show("사이다");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "사이다",
+                ItemCount = 1,
+                ItemPrice = 1500
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
     }
 }

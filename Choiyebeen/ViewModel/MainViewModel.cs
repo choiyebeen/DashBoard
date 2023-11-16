@@ -20,7 +20,7 @@ namespace Choiyebeen.ViewModel
         private string _caption;
         private IconChar _icon;
         private IUserRepository userRepository;
-        public static int m_price;
+        private int m_price;
         private ObservableCollection<CartModel> m_cart_list; //이걸 통해서 표 만들어짐
         
 
@@ -42,7 +42,7 @@ namespace Choiyebeen.ViewModel
         {
             get 
             {
-                return m_price;
+                return m_price; 
             }
 
             set
@@ -118,7 +118,7 @@ namespace Choiyebeen.ViewModel
         public ICommand PayCommand { get; set; }
         public ICommand CancleCommand { get; set; }
 
-        public MainViewModel()
+        public MainViewModel() //생성자 처음에 사용
         {
             userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
@@ -135,16 +135,12 @@ namespace Choiyebeen.ViewModel
             CancleCommand = new ViewModelCommand(ExecuteCancleCommand);
 
             CartList = new ObservableCollection<CartModel>(); //생성자에서 객체화
-            CartList.Add(new CartModel { ItemName = "아메리카노", ItemCount = 1, ItemPrice = 4000 });
-            CartList.Add(new CartModel { ItemName = "카페라떼", ItemCount = 2, ItemPrice = 4500 });
-            CartList.Add(new CartModel { ItemName = "카푸치노", ItemCount = 3, ItemPrice = 4500 });
-            for(int i = 0; i < 10; i++)
-            {
-                CartList.Add(new CartModel { ItemName = "카푸치노", ItemCount = 3, ItemPrice = 4500 });
-            }
+            
+
+
 
             //Default view
-            ExecuteShowHomeViewCommand(null);
+            ExecuteShowCustomerViewCommand(null);
 
             LoadCurrentUserData();
         }
@@ -162,57 +158,101 @@ namespace Choiyebeen.ViewModel
 
         private void ExecutePayCommand(object obj)
         {
-           MessageBoxResult result = MessageBox.Show("결제 하시겠습니까?","결제",MessageBoxButton.YesNo);
+           MessageBoxResult result = MessageBox.Show($"{Price}원을 결제 하시겠습니까?","결제",MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {
                 MessageBoxResult receipt = MessageBox.Show("영수증을 출력하시겠습니까?", "영수증", MessageBoxButton.YesNo);
                 MessageBoxResult Thx = MessageBox.Show("감사합니다");
+                CartList.Clear();
+                Price = 0;
             }
+        }
+
+
+        // 구매 장바구니
+        private void MainViewModelPriceChanged(object sender, CartModel newValue) //desertViewModel에서 newValue로 값이 넘어옴
+        {
+            int index = -1;
+            for (int i = 0; i < CartList.Count; i++) //CartList.Count는 장바구니에 있는 갯수
+            {
+                if(CartList[i].ItemName == newValue.ItemName) 
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index >= 0)
+            {
+                CartList[index].ItemCount++;
+                CartList[index].ItemPrice += newValue.ItemPrice;
+                var tempCartList = new ObservableCollection<CartModel>(CartList);
+                CartList = tempCartList; //우회
+
+            }
+            else
+            {
+                CartList.Add(newValue); //못 찾음
+            }
+
+            Price += newValue.ItemPrice; //가격 더하기
         }
 
 
 
         private void ExecuteShowDesertCommand(object obj)
         {
-            CurrentChildView = new DesertViewModel();
+            var desertViewModel = new DesertViewModel();
+            desertViewModel.PriceChanged += MainViewModelPriceChanged; //priceChanged의 값이 바뀌면 MainViewModelPriceChanged가 자동 사용
             Caption = "Desert";
             Icon = IconChar.Home;
+            CurrentChildView = desertViewModel; //화면전환
         }
 
         private void ExecuteShowAdeCommand(object obj)
         {
-            CurrentChildView = new AdeViewModel();
+            var adeViewModel = new AdeViewModel();
+            adeViewModel.PriceChanged += MainViewModelPriceChanged;
             Caption = "Ade";
             Icon = IconChar.Home;
+            CurrentChildView = adeViewModel;
         }
 
         private void ExecuteShowSmoothieCommand(object obj)
         {
-            CurrentChildView = new SmoothieViewModel();
+            var smoothieViewModel = new SmoothieViewModel();
+            smoothieViewModel.PriceChanged += MainViewModelPriceChanged;
             Caption = "Smoothie";
             Icon = IconChar.Home;
+            CurrentChildView = smoothieViewModel;
         }
 
         private void ExecuteShowCustomerViewCommand(object obj)
         {
-            CurrentChildView = new HomeViewModel();
+            var customerViewModel = new CustomerViewModel();
+            customerViewModel.PriceChanged += MainViewModelPriceChanged;
             Caption = "Customers";
             Icon = IconChar.UserGroup;
+            CurrentChildView = customerViewModel;
         }
 
         private void ExecuteShowHomeViewCommand(object obj)
         {
-            CurrentChildView = new CustomerViewModel();
+            var homeViewModel = new HomeViewModel();
+            homeViewModel.PriceChanged += MainViewModelPriceChanged;
             Caption = "Dashboard";
             Icon = IconChar.Home;
+            CurrentChildView = homeViewModel;
         }
 
         private void ExecuteShowTeaCommand(object obj)
         {
-            CurrentChildView = new TeaViewModel();
+            var teaViewModel = new TeaViewModel();
+            teaViewModel.PriceChanged += MainViewModelPriceChanged;
             Caption = "Tea";
             Icon = IconChar.Home;
+            CurrentChildView = teaViewModel;
         }
 
        

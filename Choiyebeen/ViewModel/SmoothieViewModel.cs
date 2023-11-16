@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Choiyebeen.ViewModel
 {
     public class SmoothieViewModel : ViewModelBase //상속 자료형 맞춰줘야함
     {
+        public event EventHandler<CartModel> PriceChanged;
         public ICommand PyogurtCommand { get; }
         public ICommand ByogurtCommand { get; }
         public ICommand SyogurtCommand { get; }
@@ -25,22 +27,46 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteMyogurtCommand(object obj)
         {
-            MessageBox.Show("망고 요거트 스무디");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "망고 요거트 스무디",
+                ItemCount = 1,
+                ItemPrice = 4500
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteSyogurtCommand(object obj)
         {
-            MessageBox.Show("딸기 요거트 스무디");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "딸기 요거트 스무디",
+                ItemCount = 1,
+                ItemPrice = 4500
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteByogurtCommand(object obj)
         {
-            MessageBox.Show("블루베리 요거트 스무디");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "블루베리 요거트 스무디",
+                ItemCount = 1,
+                ItemPrice = 4500
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecutePyogurtCommand(object obj)
         {
-            MessageBox.Show("플레인 요거트 스무디");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "플레인 요거트 스무디",
+                ItemCount = 1,
+                ItemPrice = 4000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
     }
 }

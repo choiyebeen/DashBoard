@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Choiyebeen.ViewModel
 {
     public class CustomerViewModel : ViewModelBase
     {
+        public event EventHandler<CartModel> PriceChanged;
         public ICommand IceCoffeeCommand { get; }
         public ICommand IceLatteCommand {get;}
         public ICommand CLatteCommand { get; }
@@ -30,32 +32,68 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteVlatteeCommand(object obj)
         {
-            MessageBox.Show("바닐라라떼");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "바닐라 라떼",
+                ItemCount = 1,
+                ItemPrice = 3800
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteMochalatteCommand(object obj)
         {
-            MessageBox.Show("모카라떼");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "모카 라떼",
+                ItemCount = 1,
+                ItemPrice = 4300
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteIceCoffeeCommand(object obj)
         {
-            MessageBox.Show("아이스커피");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "아메리카노",
+                ItemCount = 1,
+                ItemPrice = 3000
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteIceLatteCommand(object obj)
         {
-            MessageBox.Show("아이스라떼");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "카페라떼",
+                ItemCount = 1,
+                ItemPrice = 3800
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteCLatteCommand(object obj)
         {
-            MessageBox.Show("카라멜라떼");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "카라멜 마끼아또",
+                ItemCount = 1,
+                ItemPrice = 4300
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
         private void ExecuteHLatteCommand(object obj)
         {
-            MessageBox.Show("헤이즐럿라떼");
+            CartModel item = new CartModel() //cartmodel생성
+            {
+                ItemName = "헤이즐넛 라떼",
+                ItemCount = 1,
+                ItemPrice = 4300
+            };
+            PriceChanged?.Invoke(this, item); //변수넘김
         }
 
 

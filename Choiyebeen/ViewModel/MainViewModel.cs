@@ -271,7 +271,7 @@ namespace Choiyebeen.ViewModel
             }
             else
             {
-                CurrentUserAccount.DisplayName="잘못된 사용자입니다. 로그인 되지 않습니다.";
+                CurrentUserAccount.DisplayName="";
                 //hide child view
             }
         }

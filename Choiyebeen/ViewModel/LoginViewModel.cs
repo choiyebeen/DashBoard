@@ -20,7 +20,7 @@ namespace Choiyebeen.ViewModel
     {
         //Fields
         private string _username;
-        private SecureString _password;
+        private string _password;
         private string _errorMessage;
         private bool _isViewVisible=true;
 
@@ -42,7 +42,7 @@ namespace Choiyebeen.ViewModel
             }
         }
 
-        public SecureString Password
+        public string Password
         {
             get
             {
@@ -117,16 +117,24 @@ namespace Choiyebeen.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            var isValidUser = userRepository.AuthenticateUser(new NetworkCredential(Username, Password));
-            if (isValidUser)
+            if (Username == "dpqlsdl8" && Password == "1234") //절대 아이디 비번
             {
-                Thread.CurrentPrincipal = new GenericPrincipal(
-                    new GenericIdentity(Username), null);
                 IsViewVisible = false;
             }
             else
             {
-                ErrorMessage = "* Invalid username or password";
+                var isValidUser = userRepository.AuthenticateUser(new NetworkCredential(Username, Password)); //sql없으면 실행안됨
+                if (isValidUser)
+                {
+                    Thread.CurrentPrincipal = new GenericPrincipal(
+                        new GenericIdentity(Username), null);
+                    IsViewVisible = false;
+                }
+                else
+                {
+                    ErrorMessage = "* Invalid username or password";
+                }
+
             }
 
         }

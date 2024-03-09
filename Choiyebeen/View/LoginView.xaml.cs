@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,15 @@ namespace Choiyebeen.View
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void txtpassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as LoginViewModel;
+            if(viewModel != null)
+            {
+                viewModel.Password = txtpassword.Password;
+            }
         }
     }
 }

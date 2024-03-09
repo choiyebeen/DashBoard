@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Choiyebeen.Repositories
 {
@@ -16,7 +17,11 @@ namespace Choiyebeen.Repositories
         }
         protected SqlConnection GetConnection()
         {
-            return new SqlConnection(_connectionString);
+            return new SqlConnection(_connectionString); //mssql
+        }
+        protected MySqlConnection GetMySqlConnection()
+        {
+            return new MySqlConnection(_connectionString); //mysql
         }
     }
 }

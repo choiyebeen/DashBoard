@@ -17,18 +17,18 @@ namespace Choiyebeen.Repositories
             throw new NotImplementedException();
         }
 
-        public bool AuthenticateUser(NetworkCredential credntial)
+        public bool AuthenticateUser(NetworkCredential credential)
         {
             bool validUser;
-            using (var connection=GetConnection())
-            using (var command=new SqlCommand())
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "select *from [User] where username=@username and [password]=@password";
-                command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credntial.UserName;
-                command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credntial.Password;
-               // command.Parameters.Add("@password", SqlDbType.NVarChar).Value = "1234";
+                command.Parameters.Add("@username", SqlDbType.NVarChar).Value = credential.UserName;
+                command.Parameters.Add("@password", SqlDbType.NVarChar).Value = credential.Password;
+                // command.Parameters.Add("@password", SqlDbType.NVarChar).Value = "1234";
                 validUser = command.ExecuteScalar() == null ? false : true;
 
             }

@@ -299,5 +299,86 @@
     <Resource Include="images\cancle.png" />
     <Resource Include="images\pay.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ade\Gadesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ade\GGadesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ade\Ladesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Carbonated\Cidersold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Carbonated\Cocasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\Clattesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\Hlattesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\icecoffesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\icelattesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\Mochalattesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coffee\Vlattesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\Beanbreadsold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\CupCookiesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\Msold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\Cookiesold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smoothie\Byogurtsold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smoothie\Myogurtsold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smoothie\Pyogurtsold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\smoothie\Syogurtsold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Cteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Gteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Hbteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Hteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Jteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Lteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Oteasold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tea\Pteasold.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

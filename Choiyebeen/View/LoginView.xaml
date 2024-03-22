@@ -253,7 +253,7 @@
                             Cursor="Hand"
                             Margin="0,30,0,0">
 
-                        <Button.Style>
+                            <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#462ADB"/>
                                 <Style.Triggers>
@@ -263,6 +263,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
+                       
 
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
@@ -275,6 +276,19 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        
+                        <TextBlock Text="join the membership"
+                               Foreground="DarkGray"
+                               FontSize="13"
+                               FontWeight="Medium"
+                               FontFamily="Monserrat"
+                               Margin="0,15,0,0"
+                               Cursor="Hand"/>
+
+                    </StackPanel>
 
                 </StackPanel>
 

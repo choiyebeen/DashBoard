@@ -22,11 +22,11 @@ namespace Choiyebeen.ViewModel
         private string _username;
         private string _password;
         private string _errorMessage;
-        private bool _isViewVisible=true;
+        private bool _isViewVisible = true;
 
         private IUserRepository userRepository;
 
-        
+
 
         //properties
         public string Username
@@ -100,10 +100,10 @@ namespace Choiyebeen.ViewModel
         {
             userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
-            RecoverPasswordcommand = new ViewModelCommand(p=>ExecuteRecoverPassCommand("",""));
+            RecoverPasswordcommand = new ViewModelCommand(p => ExecuteRecoverPassCommand("", ""));
         }
 
-     
+
 
         private bool CanExecuteLoginCommand(object obj)
         {

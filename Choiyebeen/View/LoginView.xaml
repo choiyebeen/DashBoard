@@ -280,7 +280,7 @@
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center">
                         
-                        <TextBlock Text="join the membership"
+                        <TextBlock Text="회원가입"
                                Foreground="DarkGray"
                                FontSize="13"
                                FontWeight="Medium"

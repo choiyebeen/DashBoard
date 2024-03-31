@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Choiyebeen.View"
-        xmlns:viewModel="clr-namespace:Choiyebeen.ViewModel" xmlns:customcontrols="clr-namespace:Choiyebeen.CustomControls"
+        xmlns:viewModel="clr-namespace:Choiyebeen.ViewModel" 
+        xmlns:customcontrols="clr-namespace:Choiyebeen.CustomControls"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStyle="None"
@@ -109,7 +110,7 @@
                             </ControlTemplate>
                         </Button.Template>
 
-
+                        
                     </Button>
 
                     <Button x:Name="btnClose"
@@ -279,14 +280,18 @@
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center">
-                        
-                        <TextBlock Text="회원가입"
-                               Foreground="DarkGray"
-                               FontSize="13"
-                               FontWeight="Medium"
-                               FontFamily="Monserrat"
-                               Margin="0,15,0,0"
-                               Cursor="Hand"/>
+
+                        <Button Command="{Binding MembershipCommand}"
+                            Content="회원가입"
+                            Foreground="DarkGray"
+                            FontSize="13"
+                            FontWeight="Medium"
+                            FontFamily="Monserrat"
+                            Margin="0,15,0,0"
+                            Cursor="Hand"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0"/>
 
                     </StackPanel>
 

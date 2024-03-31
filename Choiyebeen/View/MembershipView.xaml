@@ -1,0 +1,29 @@
+﻿<Window x:Class="Choiyebeen.View.MembershipView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Choiyebeen.View" 
+        xmlns:viewModel="clr-namespace:Choiyebeen.ViewModel" 
+        mc:Ignorable="d"
+        Title="MembershipView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        MouseDown="Window_MouseDown">
+
+    <Window.DataContext>
+        <viewModel:MembershipViewModel/>
+    </Window.DataContext>
+
+
+    <Border CornerRadius="60"
+            Background="#1b1448"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="5">
+    </Border>
+
+
+</Window>

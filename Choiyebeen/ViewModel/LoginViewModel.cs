@@ -11,6 +11,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Choiyebeen.Repositories;
 using Choiyebeen.Model;
+using System.Windows;
+using Choiyebeen.View;
 
 
 
@@ -91,6 +93,7 @@ namespace Choiyebeen.ViewModel
         public ICommand RecoverPasswordcommand { get; }
         public ICommand showPasswordcommand { get; }
         public ICommand RememberPasswordcommand { get; }
+        public ICommand MembershipCommand {  get; }
 
 
 
@@ -101,6 +104,7 @@ namespace Choiyebeen.ViewModel
             userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordcommand = new ViewModelCommand(p => ExecuteRecoverPassCommand("", ""));
+            MembershipCommand = new ViewModelCommand(ExecuteMembershipCommand);
         }
 
 
@@ -115,6 +119,11 @@ namespace Choiyebeen.ViewModel
             return validData;
         }
 
+        private void ExecuteMembershipCommand(object obj)
+        {
+            MembershipView membershipView = new MembershipView();
+            membershipView.Show();
+        }
         private void ExecuteLoginCommand(object obj)
         {
             if (Username == "dpqlsdl8" && Password == "1234") //절대 아이디 비번

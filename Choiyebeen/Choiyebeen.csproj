@@ -125,6 +125,7 @@
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MembershipViewModel.cs" />
     <Compile Include="ViewModel\SmoothieViewModel.cs" />
     <Compile Include="ViewModel\TeaViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -146,6 +147,9 @@
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MembershipView.xaml.cs">
+      <DependentUpon>MembershipView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SmoothieView.xaml.cs">
       <DependentUpon>SmoothieView.xaml</DependentUpon>
@@ -198,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MembershipView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

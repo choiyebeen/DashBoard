@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Model\CartModel.cs" />
     <Compile Include="Model\HttpModel.cs" />
+    <Compile Include="Model\InventoryModel.cs" />
     <Compile Include="Model\IUserRepository.cs" />
     <Compile Include="Model\UserAccountModel.cs" />
     <Compile Include="Model\UserModel.cs" />
@@ -333,7 +334,7 @@
     <Resource Include="images\coffee\Hlattesold.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\coffee\icecoffesold.png" />
+    <Resource Include="images\coffee\icecoffeesold.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\coffee\icelattesold.png" />

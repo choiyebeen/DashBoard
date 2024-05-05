@@ -6,11 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Choiyebeen.ViewModel
 {
     public class CustomerViewModel : ViewModelBase
     {
+        InventoryModel inventory;
+
+        //추가
+        public ImageSource IceCoffeeImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.아메리카노]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.아메리카노] = value;
+                OnPropertyChanged(nameof(IceCoffeeImageSource));
+            }
+        }
+
+
+
         public event EventHandler<CartModel> PriceChanged;
         public ICommand IceCoffeeCommand { get; }
         public ICommand IceLatteCommand {get;}
@@ -21,6 +38,8 @@ namespace Choiyebeen.ViewModel
 
         public CustomerViewModel()
         {
+            inventory = InventoryModel.Instance;
+            inventory.RegisterAction(0,LoadImage);
             IceCoffeeCommand = new ViewModelCommand(ExecuteIceCoffeeCommand);
             IceLatteCommand = new ViewModelCommand(ExecuteIceLatteCommand);
             CLatteCommand = new ViewModelCommand(ExecuteCLatteCommand);
@@ -28,7 +47,19 @@ namespace Choiyebeen.ViewModel
             MochalatteCommand = new ViewModelCommand(ExecuteMochalatteCommand);
             VlatteCommand = new ViewModelCommand(ExecuteVlatteeCommand);
 
+            LoadImage();
         }
+
+
+        //추가
+        private void LoadImage()
+        {
+            IceCoffeeImageSource = new BitmapImage(new Uri(inventory.imgPath["아메리카노"], UriKind.Relative));
+            OnPropertyChanged(nameof(IceCoffeeImageSource));
+            //더 만들어야함
+        }
+
+
 
         private void ExecuteVlatteeCommand(object obj)
         {

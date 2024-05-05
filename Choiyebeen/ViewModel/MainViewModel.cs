@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Choiyebeen.Model;
 using Choiyebeen.Repositories;
 using FontAwesome.Sharp;
@@ -26,7 +27,8 @@ namespace Choiyebeen.ViewModel
         private IUserRepository userRepository;
         private int m_price;
         private ObservableCollection<CartModel> m_cart_list; //이걸 통해서 표 만들어짐
-        
+        private Timer m_timer;
+        InventoryModel inventory;
 
         //properties
         public ObservableCollection<CartModel> CartList
@@ -124,6 +126,7 @@ namespace Choiyebeen.ViewModel
 
         public MainViewModel() //생성자 처음에 사용
         {
+            inventory = InventoryModel.Instance;
             userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
             m_price = 0;
@@ -147,7 +150,71 @@ namespace Choiyebeen.ViewModel
             ExecuteShowCustomerViewCommand(null);
 
             LoadCurrentUserData();
+
+            m_timer = new Timer(async (_) => await WebGet(), null, TimeSpan.Zero, TimeSpan.FromSeconds(2));
         }
+
+        public async Task WebGet()
+        {
+            using (HttpClient client = new HttpClient()) //한글파일 2번
+            {
+                try
+                {
+                    // 쿼리 문자열 준비
+                    string queryString = "store=고척점";
+
+                    // GET 요청 보내기sonResponse);
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.112.252:8080/get?" + queryString); // 상대방 컴퓨터 ip주소 및 포트 + /get 상대방이 있어서 적어줘야함
+
+                    // 응답 확인
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // JSON 응답을 문자열로 읽기
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        // JSON 문자열을 객체로 변환
+                        var responseObj = JsonConvert.DeserializeObject<Inventory>(jsonString);
+
+                        foreach (var item in responseObj.Detail)
+                        {
+                            inventory.inventoryCount[item.Product]= int.Parse(item.Count);
+                            if (inventory.inventoryCount[item.Product] == 0)
+                            {
+                                inventory.imgPath[item.Product]=  inventory.imgPath[item.Product].Replace(".png", "sold.png");
+                            }
+                            else
+                            {
+                                inventory.imgPath[item.Product]= inventory.imgPath[item.Product].Replace("sold.png", ".png");
+                            }
+                        }
+
+                        await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+                        {
+                            inventory.InvokeAction(0);
+                        });
+
+                        //inventory.InvokeAction(0);
+                        /*                        inventory.InvokeAction(1);
+                                                inventory.InvokeAction(2);
+                                                inventory.InvokeAction(3);
+                                                inventory.InvokeAction(4);
+                                                inventory.InvokeAction(5);*/
+
+                        // 결과 출력
+                        //MessageBox.Show(jsonString);
+                    }
+                    else
+                    {
+                       // MessageBox.Show("서버로부터 응답을 받지 못했습니다. 상태 코드: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                  //  MessageBox.Show("오류 발생: " + ex.Message);
+                }
+            }
+        }
+
 
         private void ExecuteCancleCommand(object obj)
         {
@@ -232,7 +299,7 @@ namespace Choiyebeen.ViewModel
                         return false;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }

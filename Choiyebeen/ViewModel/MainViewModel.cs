@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +12,8 @@ using System.Windows.Input;
 using Choiyebeen.Model;
 using Choiyebeen.Repositories;
 using FontAwesome.Sharp;
+using MySqlX.XDevAPI;
+using Newtonsoft.Json;
 
 namespace Choiyebeen.ViewModel
 {
@@ -156,16 +160,82 @@ namespace Choiyebeen.ViewModel
             }
         }
 
-        private void ExecutePayCommand(object obj)
+        private async void ExecutePayCommand(object obj)
         {
            MessageBoxResult result = MessageBox.Show($"{Price}원을 결제 하시겠습니까?","결제",MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {
-                MessageBoxResult receipt = MessageBox.Show("영수증을 출력하시겠습니까?", "영수증", MessageBoxButton.YesNo);
-                MessageBoxResult Thx = MessageBox.Show("감사합니다");
+                //여기에 코드 추가함
+                DateTime currentTime = DateTime.Now;
+                List<ProductDetail> productDetails = new List<ProductDetail>();
+                foreach (var item in CartList)
+                {
+                    productDetails.Add(new ProductDetail
+                    {
+                        product = item.ItemName,
+                        count = item.ItemCount,
+                        price = item.ItemPrice,
+
+                    });
+                }
+
+                SalesData salesData = new SalesData
+                {
+                    store = "고척점",
+                    time = currentTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                    detail = productDetails
+                };
+
+                bool isSuccess = await WebPost(salesData);
+                if(isSuccess)
+                {
+                    MessageBoxResult receipt = MessageBox.Show("영수증을 출력하시겠습니까?", "영수증", MessageBoxButton.YesNo);
+                    MessageBoxResult Thx = MessageBox.Show("감사합니다");
+                }
+                else
+                {
+                    MessageBoxResult receipt = MessageBox.Show("영수증을 출력하시겠습니까?", "영수증", MessageBoxButton.YesNo);
+                    MessageBox.Show("서버와의 연결상태를 확인해주세요.");
+                }
                 CartList.Clear();
                 Price = 0;
+            }
+        }
+
+
+        public async Task<bool> WebPost(SalesData salesData) //한글파일 1번
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // C# 객체를 JSON 문자열로 직렬화
+                    string reqJsonString = JsonConvert.SerializeObject(salesData); //salesData를 Json 문자열로 바꿔서 reqJsonString에 저장
+                                                                                   // POST 요청을 위한 데이터 생성
+                    var postData = new StringContent(reqJsonString, System.Text.Encoding.UTF8, "application/json"); //key,value 바꾸기 //reqJsonStrins 로 사용
+
+                    // POST 요청 보내기
+                    HttpResponseMessage response = await client.PostAsync("http://192.168.112.252:8080/post", postData); // 서영언니 주소(IPv4)만 바꿔서 테스트 ex.http://192.168.173.252:8080/post
+
+                    // 응답 확인
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // JSON 응답을 문자열로 읽기
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        // 출력
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
         }
 

@@ -18,12 +18,64 @@
         <viewModel:MembershipViewModel/>
     </Window.DataContext>
 
-
-    <Border CornerRadius="60"
+    <Grid>
+        <Border CornerRadius="60"
             Background="#1b1448"
             BorderBrush="MediumSlateBlue"
-            BorderThickness="5">
-    </Border>
+            BorderThickness="5"
+            HorizontalAlignment="Center">
 
 
+
+            <!-- 회원가입 창 요소 시작 -->
+            <Grid Margin="50">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 제목 -->
+                <TextBlock Text="[ 회원가입 ]" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                <!-- 이름 입력 -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,10">
+                    <TextBlock Text="이름: " FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox Width="200"/>
+                </StackPanel>
+
+                <!-- 이메일 입력 -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,10">
+                    <TextBlock Text="이메일: " FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox Width="200"/>
+                </StackPanel>
+
+                <!-- 비밀번호 입력 -->
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,10,0,10">
+                    <TextBlock Text="비밀번호: " FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    <PasswordBox Width="200"/>
+                </StackPanel>
+
+                <!-- 비밀번호 확인 입력 -->
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10,0,10">
+                    <TextBlock Text="비밀번호 확인: " FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    <PasswordBox Width="200"/>
+                </StackPanel>
+
+                <!-- 회원가입 버튼 -->
+                <Button Grid.Row="5" Content="가입하기" Width="100" HorizontalAlignment="Center" Margin="0,30,0,0"/>
+                       
+                <!-- 이미 회원이신가요? 로그인 링크 -->
+                <TextBlock Grid.Row="7" Text="이미 회원이신가요? 로그인하기" FontSize="14" Foreground="White" HorizontalAlignment="Center" TextDecorations="Underline" Margin="0,30,0,0"/>
+            </Grid>
+            <!-- 회원가입 창 요소 끝 -->
+
+        </Border>
+    </Grid>
+    
 </Window>

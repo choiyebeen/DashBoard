@@ -52,7 +52,7 @@
                 HorizontalAlignment="Left"
                 Margin="180,10,0,0"
                 Command="{Binding IceLatteCommand}">
-            <Image Source="/images/coffee/icelatte.png"/>
+            <Image Source="/images/coffee/icelatte_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -60,7 +60,7 @@
                 HorizontalAlignment="Left"
                 Margin="350,10,0,0"
                 Command="{Binding CLatteCommand}">
-            <Image Source="/images/coffee/Clatte.png"/>
+            <Image Source="/images/coffee/Clatte_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -68,7 +68,7 @@
                 HorizontalAlignment="Left"
                 Margin="520,10,0,0"
                 Command="{Binding HLatteCommand}">
-            <Image Source="/images/coffee/Hlatte.png"/>
+            <Image Source="/images/coffee/Hlatte_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -76,7 +76,7 @@
                 HorizontalAlignment="Left"
                 Margin="10,230,0,0"
                 Command="{Binding MochalatteCommand}">
-            <Image Source="/images/coffee/Mochalatte.png"/>
+            <Image Source="/images/coffee/Mochalatte_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -84,7 +84,7 @@
                 HorizontalAlignment="Left"
                 Margin="180,230,0,0"
                 Command="{Binding VlatteCommand}">
-            <Image Source="/images/coffee/Vlatte.png"/>
+            <Image Source="/images/coffee/Vlatte_in.png"/>
         </Button>
 
 

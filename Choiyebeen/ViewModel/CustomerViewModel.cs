@@ -23,6 +23,7 @@ namespace Choiyebeen.ViewModel
             {
                 inventory.imageSource[(int)enumInventroy.아메리카노] = value;
                 OnPropertyChanged(nameof(IceCoffeeImageSource));
+                
             }
         }
 
@@ -50,13 +51,24 @@ namespace Choiyebeen.ViewModel
             LoadImage();
         }
 
-
+        
         //추가
         private void LoadImage()
         {
-            IceCoffeeImageSource = new BitmapImage(new Uri(inventory.imgPath["아메리카노"], UriKind.Relative));
-            OnPropertyChanged(nameof(IceCoffeeImageSource));
-            //더 만들어야함
+            try
+            {
+                var uri = new Uri(inventory.imgPath["아메리카노"], UriKind.RelativeOrAbsolute);  // 경로 유형에 유연하게 대응
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = uri;
+                bitmap.EndInit();
+                IceCoffeeImageSource = bitmap;  // 이미지 소스 업데이트
+                OnPropertyChanged(nameof(IceCoffeeImageSource));  // 변경 알림
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading image: " + ex.Message);  // 오류 로깅
+            }
         }
 
 

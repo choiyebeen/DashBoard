@@ -131,6 +131,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MembershipViewModel.cs" />
+    <Compile Include="ViewModel\MenuCustomViewModel.cs" />
     <Compile Include="ViewModel\SmoothieViewModel.cs" />
     <Compile Include="ViewModel\TeaViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -155,6 +156,9 @@
     </Compile>
     <Compile Include="View\MembershipView.xaml.cs">
       <DependentUpon>MembershipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuCustomView.xaml.cs">
+      <DependentUpon>MenuCustomView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SmoothieView.xaml.cs">
       <DependentUpon>SmoothieView.xaml</DependentUpon>
@@ -214,6 +218,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MenuCustomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SmoothieView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -264,134 +272,80 @@
     <Resource Include="images\DYback.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\coffee\Clatte.png" />
-    <Resource Include="images\coffee\Hlatte.png" />
-    <Resource Include="images\coffee\icecoffee.png" />
-    <Resource Include="images\coffee\icelatte.png" />
-    <Resource Include="images\coffee\Mochalatte.png" />
-    <Resource Include="images\coffee\Vlatte.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\desert\Cookie.png" />
-    <Resource Include="images\desert\Cupcookie.png" />
-    <Resource Include="images\desert\Icecream.png" />
-    <Resource Include="images\desert\Macaron.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\smoothie\Byogurt.png" />
-    <Resource Include="images\smoothie\Pyogurt.png" />
-    <Resource Include="images\smoothie\Syogurt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\ade\Gade.png" />
-    <Resource Include="images\ade\GGade.png" />
-    <Resource Include="images\ade\Lade.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\Carbonated\Cider.png" />
-    <Resource Include="images\Carbonated\Coca.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Ctea.png" />
-    <Resource Include="images\tea\Gtea.png" />
-    <Resource Include="images\tea\Hbtea.png" />
-    <Resource Include="images\tea\Htea.png" />
-    <Resource Include="images\tea\Jtea.png" />
-    <Resource Include="images\tea\Ltea.png" />
-    <Resource Include="images\tea\Otea.png" />
-    <Resource Include="images\tea\PPtea.png" />
-    <Resource Include="images\tea\Ptea.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\smoothie\Myogurt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\desert\Beanbread.png" />
+    <Resource Include="images\ade\Gade_in.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\cancle.png" />
     <Resource Include="images\pay.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ade\Gadesold.png" />
+    <Resource Include="images\ade\Gade_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ade\GGadesold.png" />
+    <Resource Include="images\ade\GGade_in.png" />
+    <Resource Include="images\ade\GGade_out.png" />
+    <Resource Include="images\ade\Lade_in.png" />
+    <Resource Include="images\ade\Lade_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ade\Ladesold.png" />
+    <Resource Include="images\Carbonated\Cider_in.png" />
+    <Resource Include="images\Carbonated\Cider_out.png" />
+    <Resource Include="images\Carbonated\Coca_in.png" />
+    <Resource Include="images\Carbonated\Coca_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Carbonated\Cidersold.png" />
+    <Resource Include="images\coffee\Clatte_in.png" />
+    <Resource Include="images\coffee\Clatte_out.png" />
+    <Resource Include="images\coffee\Hlatte_in.png" />
+    <Resource Include="images\coffee\Hlatte_out.png" />
+    <Resource Include="images\coffee\icecoffee_in.png" />
+    <Resource Include="images\coffee\icecoffee_out.png" />
+    <Resource Include="images\coffee\icelatte_in.png" />
+    <Resource Include="images\coffee\icelatte_out.png" />
+    <Resource Include="images\coffee\Mochalatte_in.png" />
+    <Resource Include="images\coffee\Mochalatte_out.png" />
+    <Resource Include="images\coffee\Vlatte_in.png" />
+    <Resource Include="images\coffee\Vlatte_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Carbonated\Cocasold.png" />
+    <Resource Include="images\desert\Beanbread_in.png" />
+    <Resource Include="images\desert\Beanbread_out.png" />
+    <Resource Include="images\desert\Cookie_in.png" />
+    <Resource Include="images\desert\Cookie_out.png" />
+    <Resource Include="images\desert\Cupcookie_in.png" />
+    <Resource Include="images\desert\CupCookie_out.png" />
+    <Resource Include="images\desert\Icecream_in.png" />
+    <Resource Include="images\desert\Macaron_in.png" />
+    <Resource Include="images\desert\M_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\coffee\Clattesold.png" />
+    <Resource Include="images\smoothie\Byogurt_in.png" />
+    <Resource Include="images\smoothie\Byogurt_out.png" />
+    <Resource Include="images\smoothie\Myogurt_in.png" />
+    <Resource Include="images\smoothie\Myogurt_out.png" />
+    <Resource Include="images\smoothie\Pyogurt_in.png" />
+    <Resource Include="images\smoothie\Pyogurt_out.png" />
+    <Resource Include="images\smoothie\Syogurt_in.png" />
+    <Resource Include="images\smoothie\Syogurt_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\coffee\Hlattesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\coffee\icecoffeesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\coffee\icelattesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\coffee\Mochalattesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\coffee\Vlattesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\desert\Beanbreadsold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\desert\CupCookiesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\desert\Msold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\desert\Cookiesold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\smoothie\Byogurtsold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\smoothie\Myogurtsold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\smoothie\Pyogurtsold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\smoothie\Syogurtsold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Cteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Gteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Hbteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Hteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Jteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Lteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Oteasold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\tea\Pteasold.png" />
+    <Resource Include="images\tea\Ctea_in.png" />
+    <Resource Include="images\tea\Ctea_out.png" />
+    <Resource Include="images\tea\Gtea_in.png" />
+    <Resource Include="images\tea\Gtea_out.png" />
+    <Resource Include="images\tea\Hbtea_in.png" />
+    <Resource Include="images\tea\Hbtea_out.png" />
+    <Resource Include="images\tea\Htea_in.png" />
+    <Resource Include="images\tea\Htea_out.png" />
+    <Resource Include="images\tea\Jtea_in.png" />
+    <Resource Include="images\tea\Jtea_out.png" />
+    <Resource Include="images\tea\Ltea_in.png" />
+    <Resource Include="images\tea\Ltea_out.png" />
+    <Resource Include="images\tea\Otea_in.png" />
+    <Resource Include="images\tea\Otea_out.png" />
+    <Resource Include="images\tea\PPtea_in.png" />
+    <Resource Include="images\tea\Ptea_in.png" />
+    <Resource Include="images\tea\Ptea_out.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

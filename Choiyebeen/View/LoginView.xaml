@@ -155,7 +155,7 @@
                     <Image Source="/Images/DYlogo.png"
                            Width="100" Height="100"/>
 
-                    <TextBlock Text="DY Cafe Kiosk"
+                    <TextBlock Text="Cafor Kiosk"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"

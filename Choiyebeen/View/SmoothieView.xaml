@@ -41,7 +41,7 @@
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
                 Command="{Binding PyogurtCommand}">
-            <Image Source="/images/smoothie/Pyogurt.png"/>
+            <Image Source="/images/smoothie/Pyogurt_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -49,7 +49,7 @@
                 HorizontalAlignment="Left"
                 Margin="180,10,0,0"
                 Command="{Binding ByogurtCommand}">
-            <Image Source="/images/smoothie/Byogurt.png"/>
+            <Image Source="/images/smoothie/Byogurt_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -57,7 +57,7 @@
                 HorizontalAlignment="Left"
                 Margin="350,10,0,0"
                 Command="{Binding SyogurtCommand}">
-            <Image Source="/images/smoothie/Syogurt.png"/>
+            <Image Source="/images/smoothie/Syogurt_in.png"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -65,7 +65,7 @@
                 HorizontalAlignment="Left"
                 Margin="520,10,0,0"
                 Command="{Binding MyogurtCommand}">
-            <Image Source="/images/smoothie/Myogurt.png"/>
+            <Image Source="/images/smoothie/Myogurt_in.png"/>
         </Button>
 
     </Grid>

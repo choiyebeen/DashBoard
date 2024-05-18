@@ -13,7 +13,32 @@ namespace Choiyebeen.Model
     {
         아메리카노=0, 
         카페라떼=1,
-        자몽에이드=21
+        카라멜마끼야또=2,
+        헤이즐럿라떼=3,
+        카페모카=4,
+        바닐라라떼=5,
+        사이다=6,
+        콜라=7,
+        시트러스차=8,
+        생강차=9,
+        한라봉차=10,
+        히비스커스=11,
+        자스민차=12,
+        레몬차=13,
+        오미자차=14,
+        복숭아아이스티=15,
+        플레인요거트스무디=16,
+        블루베리요거트스무디=17,
+        딸기요거트스무디=18,
+        망고요거트스무디=19,
+        자몽에이드=20,
+        청포도에이드=21,
+        레몬에이드=22,
+        컵쿠키=23,
+        쿠키=24,
+        아이스크림=25,
+        마카롱=26,
+        커피콩빵=27,
     }
     public class InventoryModel
     {
@@ -69,9 +94,9 @@ namespace Choiyebeen.Model
             inventoryCount["카페라떼"] = 20;
             inventoryCount["자몽에이드"] = 20;
 
-            imgPath["아메리카노"] = "/images/coffee/icecoffee.png";
+            imgPath["아메리카노"] = "/images/coffee/icecoffee_in.png";
             imgPath["카페라떼"] = "";
-            imgPath["자몽에이드"] = "/images/ade/Gade.png";
+            imgPath["자몽에이드"] = "/images/ade/Gade_in.png";
         }
 
         public Dictionary<string, int> inventoryCount;

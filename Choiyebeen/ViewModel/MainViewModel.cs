@@ -27,8 +27,11 @@ namespace Choiyebeen.ViewModel
         private IUserRepository userRepository;
         private int m_price;
         private ObservableCollection<CartModel> m_cart_list; //이걸 통해서 표 만들어짐
-        private Timer m_timer;
+        private DispatcherTimer m_timer;
         InventoryModel inventory;
+        string queryString = "gocheok"; // 고척점
+        //chingil 신길점
+        //siheung 시흥점
 
         //properties
         public ObservableCollection<CartModel> CartList
@@ -151,20 +154,25 @@ namespace Choiyebeen.ViewModel
 
             LoadCurrentUserData();
 
-            m_timer = new Timer(async (_) => await WebGet(), null, TimeSpan.Zero, TimeSpan.FromSeconds(2));
+            //m_timer = new Timer(async (_) => await WebGet(), null, TimeSpan.Zero, TimeSpan.FromSeconds(2));
+            m_timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(2)
+            };
+            m_timer.Tick += async (sender, e) => await WebGet();
+            m_timer.Start();
         }
 
         public async Task WebGet()
         {
             using (HttpClient client = new HttpClient()) //한글파일 2번
             {
+                //추가
+                client.Timeout = TimeSpan.FromSeconds(10); // 타임아웃 시간 설정
                 try
                 {
-                    // 쿼리 문자열 준비
-                    string queryString = "store=고척점";
-
                     // GET 요청 보내기sonResponse);
-                    HttpResponseMessage response = await client.GetAsync("http://192.168.112.252:8080/get?" + queryString); // 상대방 컴퓨터 ip주소 및 포트 + /get 상대방이 있어서 적어줘야함
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.29.252:8080/store/" + queryString); // 상대방 컴퓨터 ip주소 및 포트 + /get 상대방이 있어서 적어줘야함
 
                     // 응답 확인
                     if (response.IsSuccessStatusCode)
@@ -180,15 +188,15 @@ namespace Choiyebeen.ViewModel
                             inventory.inventoryCount[item.Product]= int.Parse(item.Count);
                             if (inventory.inventoryCount[item.Product] == 0)
                             {
-                                inventory.imgPath[item.Product]=  inventory.imgPath[item.Product].Replace(".png", "sold.png");
+                                inventory.imgPath[item.Product]=  inventory.imgPath[item.Product].Replace("_in", "_out");
                             }
                             else
                             {
-                                inventory.imgPath[item.Product]= inventory.imgPath[item.Product].Replace("sold.png", ".png");
+                                inventory.imgPath[item.Product]= inventory.imgPath[item.Product].Replace("_out", "_in");
                             }
                         }
 
-                        await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+                        Dispatcher.CurrentDispatcher.Invoke(() =>
                         {
                             inventory.InvokeAction(0);
                         });
@@ -275,6 +283,9 @@ namespace Choiyebeen.ViewModel
         {
             using (HttpClient client = new HttpClient())
             {
+                //추가
+                client.Timeout = TimeSpan.FromSeconds(1); // 타임아웃 시간 설정
+
                 try
                 {
                     // C# 객체를 JSON 문자열로 직렬화
@@ -283,7 +294,7 @@ namespace Choiyebeen.ViewModel
                     var postData = new StringContent(reqJsonString, System.Text.Encoding.UTF8, "application/json"); //key,value 바꾸기 //reqJsonStrins 로 사용
 
                     // POST 요청 보내기
-                    HttpResponseMessage response = await client.PostAsync("http://192.168.112.252:8080/post", postData); // 서영언니 주소(IPv4)만 바꿔서 테스트 ex.http://192.168.173.252:8080/post
+                    HttpResponseMessage response = await client.PostAsync("http://192.168.29.252:8080/post", postData); // 서영언니 주소(IPv4)만 바꿔서 테스트 ex.http://192.168.173.252:8080/post
 
                     // 응답 확인
                     if (response.IsSuccessStatusCode)

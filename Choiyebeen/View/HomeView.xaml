@@ -41,7 +41,7 @@
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
                 Command="{Binding CiderCommand}">
-            <Image Source="/images/Carbonated/Cider_in.png"/>
+            <Image Source="{Binding CiderImageSource}"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -49,7 +49,7 @@
                 HorizontalAlignment="Left"
                 Margin="180,10,0,0"
                 Command="{Binding CocaCommand}">
-            <Image Source="/images/Carbonated/Coca_in.png"/>
+            <Image Source="{Binding CocaImageSource}"/>
         </Button>
     </Grid>
 

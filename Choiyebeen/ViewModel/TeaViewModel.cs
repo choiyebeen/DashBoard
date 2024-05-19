@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Choiyebeen.ViewModel
 {
@@ -19,18 +21,164 @@ namespace Choiyebeen.ViewModel
         public ICommand JteaCommand { get; }
         public ICommand LteaCommand { get; }
         public ICommand OteaCommand { get; }
-        public ICommand PPteaCommand { get; }
+        public ICommand PteaCommand { get; }
+
+        InventoryModel inventory;
+
+        public ImageSource CteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.시트러스차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.시트러스차] = value;
+                OnPropertyChanged(nameof(CteaImageSource));
+
+            }
+        }
+        public ImageSource GteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.생강차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.생강차] = value;
+                OnPropertyChanged(nameof(GteaImageSource));
+
+            }
+        }
+        public ImageSource HteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.한라봉차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.한라봉차] = value;
+                OnPropertyChanged(nameof(HteaImageSource));
+
+            }
+        }
+        public ImageSource HbteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.히비스커스차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.히비스커스차] = value;
+                OnPropertyChanged(nameof(HbteaImageSource));
+
+            }
+        }
+        public ImageSource JteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.자스민차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.자스민차] = value;
+                OnPropertyChanged(nameof(JteaImageSource));
+
+            }
+        }
+        public ImageSource LteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.레몬차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.레몬차] = value;
+                OnPropertyChanged(nameof(LteaImageSource));
+
+            }
+        }
+        public ImageSource OteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.오미자차]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.오미자차] = value;
+                OnPropertyChanged(nameof(OteaImageSource));
+
+            }
+        }
+        public ImageSource PteaImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.복숭아아이스티]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.복숭아아이스티] = value;
+                OnPropertyChanged(nameof(PteaImageSource));
+
+            }
+        }
 
         public TeaViewModel()
         {
+            inventory = InventoryModel.Instance;
+            inventory.RegisterAction(2, LoadImage);
             CteaCommand = new ViewModelCommand(ExecuteCteaCommand);
             GteaCommand = new ViewModelCommand(ExecuteGteaCommand);
-            HteaCommand = new ViewModelCommand(ExecuteHteaCommand);
-            HbteaCommand = new ViewModelCommand(ExecuteHbteaCommand);
-            JteaCommand = new ViewModelCommand(ExecuteJteaCommand);
-            LteaCommand = new ViewModelCommand(ExecuteLteaCommand);
-            OteaCommand = new ViewModelCommand(ExecuteOteaCommand);
-            PPteaCommand = new ViewModelCommand(ExecutePPteaCommand);
+            HteaCommand = new ViewModelCommand(ExecuteGteaCommand);
+            HbteaCommand = new ViewModelCommand(ExecuteGteaCommand);
+            LteaCommand = new ViewModelCommand(ExecuteGteaCommand);
+            JteaCommand = new ViewModelCommand(ExecuteGteaCommand);
+            PteaCommand = new ViewModelCommand(ExecuteGteaCommand);
+            OteaCommand = new ViewModelCommand(ExecuteGteaCommand);
+            LoadImage();
+        }
+
+        private void LoadImage()
+        {
+            try
+            {
+                var imagePaths = new Dictionary<enumInventroy, string>
+                {
+                    { enumInventroy.시트러스차, inventory.imgPath["시트러스차"] },
+                    { enumInventroy.생강차, inventory.imgPath["생강차"] },
+                    { enumInventroy.한라봉차, inventory.imgPath["한라봉차"] },
+                    { enumInventroy.히비스커스차, inventory.imgPath["히비스커스차"] },
+                    { enumInventroy.레몬차, inventory.imgPath["레몬차"] },
+                    { enumInventroy.자스민차, inventory.imgPath["자스민차"] },
+                    { enumInventroy.복숭아아이스티, inventory.imgPath["복숭아아이스티"] },
+                    { enumInventroy.오미자차, inventory.imgPath["오미자차"] },
+                };
+
+                foreach (var imagePath in imagePaths)
+                {
+                    var uri = new Uri(imagePath.Value, UriKind.RelativeOrAbsolute);
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = uri;
+                    bitmap.EndInit();
+
+                    switch (imagePath.Key)
+                    {
+                        case enumInventroy.시트러스차:
+                            CteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.생강차:
+                            GteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.한라봉차:
+                            HteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.히비스커스차:
+                            HbteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.레몬차:
+                            LteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.자스민차:
+                            JteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.복숭아아이스티:
+                            PteaImageSource = bitmap;
+                            break;
+                        case enumInventroy.오미자차:
+                            OteaImageSource = bitmap;
+                            break;
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading images: " + ex.Message);
+            }
         }
 
         private void ExecutePPteaCommand(object obj)

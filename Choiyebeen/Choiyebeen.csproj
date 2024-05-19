@@ -316,7 +316,7 @@
     <Resource Include="images\desert\CupCookie_out.png" />
     <Resource Include="images\desert\Icecream_in.png" />
     <Resource Include="images\desert\Macaron_in.png" />
-    <Resource Include="images\desert\M_out.png" />
+    <Resource Include="images\desert\Macaron_out.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\smoothie\Byogurt_in.png" />

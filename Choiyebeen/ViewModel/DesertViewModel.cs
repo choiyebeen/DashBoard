@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Choiyebeen.ViewModel
 {
@@ -18,15 +20,121 @@ namespace Choiyebeen.ViewModel
         public ICommand MacaronCommand { get; }
         public ICommand BeanbreadCommand { get; }
 
+        InventoryModel inventory;
+
+        public ImageSource CupcookieImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.컵쿠키]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.컵쿠키] = value;
+                OnPropertyChanged(nameof(CupcookieImageSource));
+
+            }
+        }
+
+        public ImageSource CookieImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.쿠키] ; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.쿠키] = value;
+                OnPropertyChanged(nameof(CookieImageSource));
+
+            }
+        }
+        public ImageSource IcecreamImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.아이스크림]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.아이스크림] = value;
+                OnPropertyChanged(nameof(IcecreamImageSource));
+
+            }
+        }
+
+        public ImageSource MacaronImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.마카롱]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.마카롱] = value;
+                OnPropertyChanged(nameof(MacaronImageSource));
+
+            }
+        }
+        public ImageSource BeanbreadImageSource
+        {
+            get { return inventory.imageSource[(int)enumInventroy.커피콩빵]; }
+            set
+            {
+                inventory.imageSource[(int)enumInventroy.커피콩빵] = value;
+                OnPropertyChanged(nameof(BeanbreadImageSource));
+
+            }
+        }
+
         public DesertViewModel() //생성자 먼저사용됨
         {
+            inventory = InventoryModel.Instance;
+            inventory.RegisterAction(5, LoadImage);
             CupcookieCommand = new ViewModelCommand(ExecuteCupcookieCommand);
             CookieCommand = new ViewModelCommand(ExecuteCookieCommand);
             IcecreamCommand = new ViewModelCommand(ExecuteIcecreamCommand);
             MacaronCommand = new ViewModelCommand(ExecuteMacaronCommand);
             BeanbreadCommand = new ViewModelCommand(ExecuteBeanbreadCommand);
-
+            LoadImage();
         }
+
+        private void LoadImage()
+        {
+            try
+            {
+                var imagePaths = new Dictionary<enumInventroy, string>
+                {
+                    { enumInventroy.컵쿠키, inventory.imgPath["컵쿠키"] },
+                    { enumInventroy.쿠키, inventory.imgPath["쿠키"] },
+                    { enumInventroy.아이스크림, inventory.imgPath["아이스크림"] },
+                    { enumInventroy.마카롱, inventory.imgPath["마카롱"] },
+                     { enumInventroy.커피콩빵, inventory.imgPath["커피콩빵"] },
+                };
+
+                foreach (var imagePath in imagePaths)
+                {
+                    var uri = new Uri(imagePath.Value, UriKind.RelativeOrAbsolute);
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = uri;
+                    bitmap.EndInit();
+
+                    switch (imagePath.Key)
+                    {
+                        case enumInventroy.컵쿠키:
+                            CupcookieImageSource = bitmap;
+                            break;
+                        case enumInventroy.쿠키:
+                            CookieImageSource = bitmap;
+                            break;
+                        case enumInventroy.아이스크림:
+                            IcecreamImageSource = bitmap;
+                            break;
+                        case enumInventroy.마카롱:
+                            MacaronImageSource = bitmap;
+                            break;
+                        case enumInventroy.커피콩빵:
+                            BeanbreadImageSource = bitmap;
+                            break;
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading images: " + ex.Message);
+            }
+        }
+
 
         private void ExecuteBeanbreadCommand(object obj)
         {

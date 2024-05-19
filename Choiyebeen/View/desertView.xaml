@@ -41,7 +41,7 @@
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
                 Command="{Binding CupcookieCommand}">
-            <Image Source="/images/desert/Cupcookie_in.png"/>
+            <Image Source="{Binding CupcookieImageSource}"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -49,7 +49,7 @@
                 HorizontalAlignment="Left"
                 Margin="180,10,0,0"
                 Command="{Binding CookieCommand}">
-            <Image Source="/images/desert/Cookie_in.png"/>
+            <Image Source="{Binding CookieImageSource}"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -57,7 +57,7 @@
                 HorizontalAlignment="Left"
                 Margin="350,10,0,0"
                 Command="{Binding IcecreamCommand}">
-            <Image Source="/images/desert/Icecream_in.png"/>
+            <Image Source="{Binding IcecreamImageSource}"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -65,7 +65,7 @@
                 HorizontalAlignment="Left"
                 Margin="520,10,0,0"
                 Command="{Binding MacaronCommand}">
-            <Image Source="/images/desert/Macaron_in.png"/>
+            <Image Source="{Binding MacaronImageSource}"/>
         </Button>
 
         <Button Grid.Row="1" Width="180" Height="180" Background="Transparent" BorderBrush="Transparent"
@@ -73,7 +73,7 @@
                 HorizontalAlignment="Left"
                 Margin="10,230,0,0"
                 Command="{Binding BeanbreadCommand}">
-            <Image Source="/images/desert/Beanbread_in.png"/>
+            <Image Source="{Binding BeanbreadCommand}"/>
         </Button>
 
 

@@ -199,6 +199,11 @@ namespace Choiyebeen.ViewModel
                         Dispatcher.CurrentDispatcher.Invoke(() =>
                         {
                             inventory.InvokeAction(0);
+                            inventory.InvokeAction(1);
+                            inventory.InvokeAction(2);
+                            inventory.InvokeAction(3);
+                            inventory.InvokeAction(4);
+                            inventory.InvokeAction(5);
                         });
 
                         //inventory.InvokeAction(0);

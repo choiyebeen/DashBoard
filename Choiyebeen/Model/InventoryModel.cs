@@ -22,7 +22,7 @@ namespace Choiyebeen.Model
         시트러스차=8,
         생강차=9,
         한라봉차=10,
-        히비스커스=11,
+        히비스커스차=11,
         자스민차=12,
         레몬차=13,
         오미자차=14,
@@ -92,11 +92,73 @@ namespace Choiyebeen.Model
 
             inventoryCount["아메리카노"] = 20;
             inventoryCount["카페라떼"] = 20;
+            inventoryCount["카라멜마끼야또"] = 20;
+            inventoryCount["헤이즐럿라떼"] = 20;
+            inventoryCount["카페모카"] = 20;
+            inventoryCount["바닐라라떼"] = 20;
+
+            inventoryCount["사이다"] = 20;
+            inventoryCount["콜라"] = 20;
+
+            inventoryCount["시트러스차"] = 20;
+            inventoryCount["생강차"] = 20;
+            inventoryCount["한라봉차"] = 20;
+            inventoryCount["히비스커스차"] = 20;
+            inventoryCount["레몬차"] = 20;
+            inventoryCount["자스민차"] = 20;
+            inventoryCount["복숭아아이스티"] = 20;
+            inventoryCount["오미자차"] = 20;
+
+            inventoryCount["플레인요거트스무디"] = 20;
+            inventoryCount["블루베리요거트스무디"] = 20;
+            inventoryCount["딸기요거트스무디"] = 20;
+            inventoryCount["망고요거트스무디"] = 20;
+
+            inventoryCount["청포도에이드"] = 20;
+            inventoryCount["레몬에이드"] = 20;
             inventoryCount["자몽에이드"] = 20;
 
+            inventoryCount["컵쿠키"] = 20;
+            inventoryCount["쿠키"] = 20;
+            inventoryCount["아이스크림"] = 20;
+            inventoryCount["마카롱"] = 20;
+            inventoryCount["커피콩빵"] = 20;
+
+
+
             imgPath["아메리카노"] = "/images/coffee/icecoffee_in.png";
-            imgPath["카페라떼"] = "";
+            imgPath["카페라떼"] = "/images/coffee/icelatte_in.png";
+            imgPath["카라멜마끼야또"] = "/images/coffee/Clatte_in.png";
+            imgPath["헤이즐럿라떼"] = "/images/coffee/Hlatte_in.png";
+            imgPath["카페모카"] = "/images/coffee/Mochalatte_in.png";
+            imgPath["바닐라라떼"] = "/images/coffee/Vlatte_in.png";
+
+            imgPath["사이다"] = "/images/Carbonated/Cider_in.png";
+            imgPath["콜라"] = "/images/Carbonated/Coca_in.png";
+
+            imgPath["시트러스차"] = "/images/tea/Ctea_in.png";
+            imgPath["생강차"] = "/images/tea/Gtea_in.png";
+            imgPath["한라봉차"] = "/images/tea/Htea_in.png";
+            imgPath["히비스커스차"] = "/images/tea/Hbtea_in.png";
+            imgPath["레몬차"] = "/images/tea/Ltea_in.png";
+            imgPath["자스민차"] = "/images/tea/Jtea_in.png";
+            imgPath["복숭아아이스티"] = "/images/tea/Ptea_in.png";
+            imgPath["오미자차"] = "/images/tea/Otea_in.png";
+
+            imgPath["플레인요거트스무디"] = "/images/smoothie/Pyogurt_in.png";
+            imgPath["블루베리요거트스무디"] = "/images/smoothie/Byogurt_in.png";
+            imgPath["딸기요거트스무디"] = "/images/smoothie/Syogurt_in.png";
+            imgPath["망고요거트스무디"] = "/images/smoothie/Myogurt_in.png";
+
             imgPath["자몽에이드"] = "/images/ade/Gade_in.png";
+            imgPath["청포도에이드"] = "/images/ade/GGade_in.png";
+            imgPath["레몬에이드"] = "/images/ade/Lade_in.png";
+
+            imgPath["컵쿠키"] = "/images/desert/Cupcookie_in.png";
+            imgPath["쿠키"] = "/images/desert/Cookie_in.png";
+            imgPath["아이스크림"] = "/images/desert/Icecream_in.png";
+            imgPath["마카롱"] = "/images/desert/Macaron_in.png";
+            imgPath["커피콩빵"] = "/images/desert/Beanbread_in.png";
         }
 
         public Dictionary<string, int> inventoryCount;

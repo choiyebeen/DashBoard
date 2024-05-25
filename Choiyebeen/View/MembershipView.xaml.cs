@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choiyebeen.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,14 @@ namespace Choiyebeen.View
         {
             InitializeComponent();
         }
-
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MembershipViewModel viewModel)
+            {
+                var passwordBox = sender as PasswordBox;
+                viewModel.Password = passwordBox.Password;
+            }
+        }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
 

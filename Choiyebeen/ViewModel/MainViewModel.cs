@@ -172,7 +172,7 @@ namespace Choiyebeen.ViewModel
                 try
                 {
                     // GET 요청 보내기sonResponse);
-                    HttpResponseMessage response = await client.GetAsync("http://192.168.29.252:8080/store/" + queryString); // 상대방 컴퓨터 ip주소 및 포트 + /get 상대방이 있어서 적어줘야함
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.118.252:8080/store/" + queryString); // 상대방 컴퓨터 ip주소 및 포트 + /get 상대방이 있어서 적어줘야함
 
                     // 응답 확인
                     if (response.IsSuccessStatusCode)
@@ -299,7 +299,7 @@ namespace Choiyebeen.ViewModel
                     var postData = new StringContent(reqJsonString, System.Text.Encoding.UTF8, "application/json"); //key,value 바꾸기 //reqJsonStrins 로 사용
 
                     // POST 요청 보내기
-                    HttpResponseMessage response = await client.PostAsync("http://192.168.29.252:8080/post", postData); // 서영언니 주소(IPv4)만 바꿔서 테스트 ex.http://192.168.173.252:8080/post
+                    HttpResponseMessage response = await client.PostAsync("http://192.168.118.252:8080/post", postData); // 서영언니 주소(IPv4)만 바꿔서 테스트 ex.http://192.168.173.252:8080/post
 
                     // 응답 확인
                     if (response.IsSuccessStatusCode)

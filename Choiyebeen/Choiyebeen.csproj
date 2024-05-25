@@ -347,5 +347,8 @@
     <Resource Include="images\tea\Ptea_in.png" />
     <Resource Include="images\tea\Ptea_out.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\desert\Icecream_out.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
